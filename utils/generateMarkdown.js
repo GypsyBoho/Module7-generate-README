@@ -69,9 +69,9 @@ ${licenseMenu(data.license)}
 
 ${data.install}
 
-## Use
+## Usage
 
-${data.use}
+${data.usage}
 
 ${renderLicenseSection(data.license)}
 
