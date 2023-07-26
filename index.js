@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 
-const {defailt:inquirer} = require('inquirer');
+const {prompt} = require('inquirer');
 // add a package that would import generate file
 // export 'require' from a file const bad math = require('./badmath.js');
 // node.js will be executed
@@ -29,9 +29,10 @@ const questions = [
         name: 'use',
     },
     {
-        type: "input",
+        type: "list",
         message: 'Which license do you want?',
         name: 'license',
+        choices: ['MIT', 'Apache', 'GNU GPL v3', 'none']
     },
     {
         type: "input",
@@ -61,10 +62,7 @@ const questions = [
 // TODO: Create a function to initialize app
 function init() {
     // this is where we need to ask the user the questions to be filled in for the README
-    inquirer
-    .prompt([
-        // pass questions here
-    ])
+    prompt(questions)
     .then((answers) => {
         console.log(answers)
         let markDown = generateMarkdown(answers)
@@ -81,4 +79,3 @@ function writeToFile(fileName, data) {
 // Function call to initialize app
 init();
 
-/

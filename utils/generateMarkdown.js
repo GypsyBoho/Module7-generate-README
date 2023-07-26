@@ -41,6 +41,14 @@ function renderLicenseSection(license) {
   }
 }
 
+function licenseMenu(license) {
+  if(data.license === 'none'){
+    return ''
+    } else {
+      return '* [License](#license)'
+    }
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `${renderLicenseBadge(data.license)}
@@ -54,8 +62,8 @@ ${data.description}
 
 * [Installation](#installation)
 * [Usage](#usage)
-* [Credits](#credits)
-* [License](#license)
+* [Contributing](#contributing)
+${licenseMenu(data.license)}
 
 ## Installation
 
