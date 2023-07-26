@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
+const fs = require('fs');
 
-const {prompt} = require('inquirer');
+const { prompt } = require('inquirer');
 // add a package that would import generate file
 // export 'require' from a file const bad math = require('./badmath.js');
 // node.js will be executed
@@ -41,7 +42,7 @@ const questions = [
     },
     {
         type: "input",
-        message: 'Explain how to test the app. (Optional)',
+        message: 'Explain how to test the app (Optional)',
         name: 'test',
     },
     {
@@ -54,7 +55,7 @@ const questions = [
         message: 'What is your Github username?',
         name: 'username',
     },
-// title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
+    // title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 
 ];
 
@@ -63,19 +64,21 @@ const questions = [
 function init() {
     // this is where we need to ask the user the questions to be filled in for the README
     prompt(questions)
-    .then((answers) => {
-        console.log(answers)
-        let markDown = generateMarkdown(answers)
-        // call writeToFile
-    }).catch((error) => {
-        console.log(error)
-    });
+        .then((answers) => {
+            console.log(answers)
+            let markDown = generateMarkdown(answers)
+
+            fs.writeFile('README.md', markDown, (err) =>
+                err ? console.error(err) : console.log('Success!')
+            );
+            // call writeToFile
+        }).catch((error) => {
+            console.log(error)
+        });
 }
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    // create the readme
-}
+
 // Function call to initialize app
 init();
 
