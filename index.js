@@ -9,68 +9,75 @@ const generateMarkdown = require('./utils/generateMarkdown')
 // TODO: Create an array of questions for user input
 const questions = [
     {
-        type: "input"
+        type: "input",
         message: 'What is the title of the project',
         name: 'title',
     },
     {
-        type: "input"
+        type: "input",
         message: 'Describe the project',
         name: 'description',
     },
     {
-        type: "input"
+        type: "input",
         message: 'Describe how to install the app',
         name: 'install',
     },
     {
-        type: "input"
+        type: "input",
         message: 'Describe how to use the app',
         name: 'use',
     },
     {
-        type: "input"
+        type: "input",
         message: 'Which license do you want?',
         name: 'license',
     },
     {
-        type: "input"
+        type: "input",
         message: 'Who contributed to this project? (Optional)',
         name: 'contributing',
     },
     {
-        type: "input"
-        message: 'Who contributed to this project? (Optional)',
-        name: 'contributing',
-    },
-    {
-        type: "input"
+        type: "input",
         message: 'Explain how to test the app. (Optional)',
         name: 'test',
     },
     {
-        type: "input"
-        message: 'Have any questions?',
-        name: 'questions',
+        type: "input",
+        message: 'What is your email?',
+        name: 'email',
+    },
+    {
+        type: "input",
+        message: 'What is your Github username?',
+        name: 'username',
     },
 // title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    // create the readme
-}
 
 // TODO: Create a function to initialize app
 function init() {
     // this is where we need to ask the user the questions to be filled in for the README
-    // store answers as a variable and create the content for the readme function(generateMarkdown)
-    // we need to invoke the generate mark down function (lives in the generateMarkdown.js) and pass the object (key: value pairs) from the index.js file into it
-    // call function writeToFile
-    console.log("Hello")
+    inquirer
+    .prompt([
+        // pass questions here
+    ])
+    .then((answers) => {
+        console.log(answers)
+        let markDown = generateMarkdown(answers)
+        // call writeToFile
+    }).catch((error) => {
+        console.log(error)
+    });
 }
 
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+    // create the readme
+}
 // Function call to initialize app
 init();
 
